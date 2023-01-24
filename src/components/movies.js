@@ -3,7 +3,6 @@ import Movie from './movie'
 
 
 
-
 function Movies(props) {
 
   return (

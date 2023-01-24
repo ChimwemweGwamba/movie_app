@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useStore } from 'easy-peasy'
 import Movies from '../components/movies'
 import Navbar from '../components/navbar'
 
