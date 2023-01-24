@@ -5,6 +5,7 @@ import Movie from './movie'
 
 
 function Movies(props) {
+
   return (
     <Container>
         <SubHeading>{props.subHeading}</SubHeading>

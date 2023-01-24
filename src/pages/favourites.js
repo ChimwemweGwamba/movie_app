@@ -6,31 +6,30 @@ import Navbar from '../components/navbar'
 
 
 function Favourites() {
-    const movieList = useStore(state => state.movies)
     const [movies, setMovies] = useState([]);
   
-    const getFavouriteMovies = () => {
-      let favouriteMovies = []
+    // const getFavouriteMovies = () => {
+    //   let favouriteMovies = []
 
-      for (let i=0; i<movieList.getState().movies.length; i++){
-        if(movieList.getState().movies[i].favourite){
-          favouriteMovies.push(movieList.getState().movies[i])
-        }
-      }
+    //   for (let i=0; i<movieList.getState().movies.length; i++){
+    //     if(movieList.getState().movies[i].favourite){
+    //       favouriteMovies.push(movieList.getState().movies[i])
+    //     }
+    //   }
 
-      setMovies(favouriteMovies)
-      }
+    //   setMovies(favouriteMovies)
+    //   }
   
 
-    useEffect(() => {
-        getFavouriteMovies();
-    }, [])
+    // useEffect(() => {
+    //     getFavouriteMovies();
+    // }, [])
 
 
   return (
     <Container>
         <Navbar></Navbar>
-        <Movies movies={movies} heading={'Your Favourite Movies'} subHeading={'YOUR LIKED MOVIES'}></Movies>
+        {/* <Movies movies={movies} heading={'Your Favourite Movies'} subHeading={'YOUR LIKED MOVIES'}></Movies> */}
     </Container>
   )
 }

@@ -6,13 +6,11 @@ import styled , { css } from 'styled-components'
 function Banner(props) {
 
   return (
-    <Container backgroundImg={{ url: 'https://image.tmdb.org/t/p/original' + props.topRated.backdrop_path}}>
+    <Container backgroundImg={{ url:'https://image.tmdb.org/t/p/original' + props.movie.backdrop_path}}>
         <TextContainer>
             <MovieDesc  primary>Todays Top Rated</MovieDesc>
-
-            <MovieTitle>{props.topRated.title}</MovieTitle>
-
-            <MovieDesc>{props.topRated.overview}</MovieDesc>
+            <MovieTitle>{props.movie.title}</MovieTitle>
+            <MovieDesc>{props.movie.overview}</MovieDesc>
         </TextContainer>
     </Container>
   )

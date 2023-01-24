@@ -2,19 +2,15 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import likedStar from '../assets/images/star.png'
 import star from '../assets/images/star2.png'
-import { useStoreActions } from 'easy-peasy'
-
 
 
 
 function Movie(props) {
 
   const [liked, setLiked] = useState(props.movie.favourite);
-  const addFavourite = useStoreActions((actions) => actions.addFavourite);
 
-  const handleClick = event => {
+  function handleClick () {
     setLiked(!props.movie.favourite)
-    addFavourite(props.movie.id)
   }
 
   return (
@@ -54,12 +50,12 @@ const Container = styled.div`
     cursor: pointer;
     transform: scale(1.1)
   }
-`;
+`
 
 const ImageContainer = styled.div`
     width: 100%;
     position: relative;
-`;
+`
 
 const MovieImage = styled.img`
     width: 100%;
@@ -71,7 +67,6 @@ const MovieDesc = styled.p`
   transition: 0.5s ease;
   opacity: 0;
   bottom: 0;
-
   color: white;
   margin: 0;
   padding: 20px 10px;
@@ -79,7 +74,6 @@ const MovieDesc = styled.p`
   font-size: 13px;
   font-weight: 300;
   line-height: 20px;
-
 
   ${ImageContainer}:hover & {
     opacity: 1;
@@ -92,7 +86,6 @@ const MovieTitle = styled.p`
   padding: 10px 0;
   margin: 0;
   font-weight: bold;
-
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -114,10 +107,10 @@ const Rating = styled.p`
 
 const Favourite = styled.div`
 
-`;
+`
 
 const FavIcon = styled.img`
     height: 20px;
-`;
+`
 
 export default Movie
