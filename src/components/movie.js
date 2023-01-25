@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import likedStar from '../assets/images/star.png'
 import star from '../assets/images/star2.png'
+import { device } from '../data/devices'
 
 
 
@@ -42,14 +43,22 @@ function Movie(props) {
 
 const Container = styled.div`
   width: fit-content;
-  margin: 50px 2.5% 50px 2.5%;
-  width: 20%;
+  margin: 50px 0;
+  width: 100%;
   transition: 0.2s;
 
   &:hover {
     cursor: pointer;
     transform: scale(1.1)
   }
+
+
+  @media ${device.desktop}{
+  width: fit-content;
+  margin: 50px 2.5% 50px 2.5%;
+  width: 20%;
+  }
+
 `
 
 const ImageContainer = styled.div`
@@ -82,13 +91,16 @@ const MovieDesc = styled.p`
 
 const MovieTitle = styled.p`
   color: white;
-  font-size: 14px;
-  padding: 10px 0;
+  font-size: 25px;
+  padding: 15px 0;
   margin: 0;
   font-weight: bold;
   text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
+
+  @media ${device.desktop}{
+    font-size: 20px;
+  }
 `
 
 const MovieRatingContainer = styled.div`

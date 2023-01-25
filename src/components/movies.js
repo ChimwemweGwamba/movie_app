@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Movie from './movie'
+import { device } from '../data/devices'
 
 
 
@@ -21,8 +22,12 @@ function Movies(props) {
 
 
 const Container = styled.div`
-margin: 100px 0;
-padding: 0 70px;
+width: 90%;
+margin: 100px auto;
+
+@media ${device.desktop}{
+width: 100%;
+}
 `
 
 const SubHeading = styled.p`
@@ -35,15 +40,19 @@ font-size: 50px;
 font-weight: 900;
 color: white;
 text-align: center;
-
 `
 
 const MovieContainer = styled.div`
-padding: 50px 0;
+padding: 0;
 display: flex;
+flex-direction: column;
+
+@media ${device.desktop}{
+padding: 50px 0;
 flex-direction: row;
 flex-wrap: wrap;
 justify-content: flex-start;
+}
 `
 
 export default Movies
