@@ -1,41 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import likedStar from '../assets/images/star.png'
-import star from '../assets/images/star2.png'
+import Rating from './rating'
 import { device } from '../data/devices'
 
 
 
 function Movie(props) {
 
-  const [liked, setLiked] = useState(props.movie.favourite);
-
-  function handleClick () {
-    setLiked(!props.movie.favourite)
-  }
-
+  console.log(props)
   return (
     <Container>
-        <ImageContainer>
-            <MovieImage src={'https://image.tmdb.org/t/p/w500' + props.movie.poster_path}></MovieImage>
-            <MovieDesc>{props.movie.overview}</MovieDesc>
-        </ImageContainer>
+      <ImageContainer>
+          <MovieImage src={'https://image.tmdb.org/t/p/w500' + props.movie.poster_path}></MovieImage>
+          <MovieDesc>{props.movie.overview}</MovieDesc>
+      </ImageContainer>
 
+      <MovieContainer>
         <MovieTitle>{props.movie.title}</MovieTitle>
-
-        <MovieRatingContainer>
-            <Rating>Rating: {props.movie.vote_average * 10}%</Rating>
-            
-            <Favourite>
-              {liked === true &&
-                <FavIcon src={likedStar} onClick={handleClick}></FavIcon>
-              }
-
-              {liked === false &&
-                <FavIcon src={star} onClick={handleClick}></FavIcon>
-              }
-            </Favourite>
-        </MovieRatingContainer>
+        <Rating ratings = {props.movie.vote_average * 10}/>
+      </MovieContainer>
     </Container>
   )
 }
@@ -61,9 +44,17 @@ const Container = styled.div`
 
 `
 
+const MovieContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+`
+
 const ImageContainer = styled.div`
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 `
 
 const MovieImage = styled.img`
@@ -92,8 +83,8 @@ const MovieDesc = styled.p`
 const MovieTitle = styled.p`
   color: white;
   font-size: 25px;
-  padding: 15px 0;
   margin: 0;
+  width: 80%;
   font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -103,26 +94,5 @@ const MovieTitle = styled.p`
   }
 `
 
-const MovieRatingContainer = styled.div`
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`
-
-const Rating = styled.p`
-  color: white;
-  margin: 0;
-  font-size: 13px;
-  font-weight: 200;
-`
-
-const Favourite = styled.div`
-
-`
-
-const FavIcon = styled.img`
-    height: 20px;
-`
 
 export default Movie

@@ -25,7 +25,7 @@ const Container = styled.div`
 
   display: flex;
   align-items: center;
-  background-image: linear-gradient(90deg, rgba(0,0,0,0.8496586134453782) 40%, rgba(255,255,255,0) 81%), linear-gradient(0deg, rgba(0,0,0,0.6496586134453782) 5%, rgba(255,255,255,0) 91%), url('${props => props.backgroundImg.url}'); 
+  background-image: linear-gradient(90deg, rgba(0,0,0,0.8496586134453782) 20%, rgba(255,255,255,0) 80%), linear-gradient(0deg, rgba(0,0,0,0.6496586134453782) 5%, rgba(255,255,255,0) 91%), url('${props => props.backgroundImg.url}'); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

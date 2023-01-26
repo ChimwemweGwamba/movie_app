@@ -14,9 +14,13 @@ function Home() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true)
 
+  let api_key = process.env.REACT_APP_API_KEY
+
+  console.log(api_key)
+
 
   const getMovies = async () => {
-      const url = `https://api.themoviedb.org/3/movie/popular?api_key=d0f5f2e135336200362af8a1a73acb17&page=${page}`
+      const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=${page}`
 
       try {
         const response = await fetch(url)
