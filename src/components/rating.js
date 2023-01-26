@@ -2,9 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-function Rating(props) {
+function Rating(props) { 
+
+    const color = {
+        main: props.ratingsColor
+      };
+    
   return (
-    <Container>
+    <Container color={color}>
         <RatingValue>
             {props.ratings}%
         </RatingValue>
@@ -17,7 +22,7 @@ const Container = styled.div`
 height: 40px;
 width: 40px;
 border-radius: 50%;
-background: red;
+background: ${props => props.color.main};
 display: flex;
 align-items: center;
 justify-content: center;

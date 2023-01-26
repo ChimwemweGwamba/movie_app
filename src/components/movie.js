@@ -7,7 +7,7 @@ import { device } from '../data/devices'
 
 function Movie(props) {
 
-  console.log(props)
+
   return (
     <Container>
       <ImageContainer>
@@ -17,7 +17,10 @@ function Movie(props) {
 
       <MovieContainer>
         <MovieTitle>{props.movie.title}</MovieTitle>
-        <Rating ratings = {props.movie.vote_average * 10}/>
+        <Rating ratings = {props.movie.vote_average * 10} 
+                ratingsColor = {props.movie.vote_average >= 8.0 ? 
+                                'green' : props.movie.vote_average >= 6.5 ? 
+                                'orange' : 'red'}/>
       </MovieContainer>
     </Container>
   )
