@@ -9,7 +9,9 @@ function Banner(props) {
   return (
     <Container backgroundImg={{ url:'https://image.tmdb.org/t/p/original' + props.movie.backdrop_path}}>
         <TextContainer>
-            <MovieDesc  primary>Todays Pick</MovieDesc>
+            <MovieDesc  primary>Today's Top Pick</MovieDesc>
+
+            {/* This shows the movie title and description */}
             <MovieTitle>{props.movie.title}</MovieTitle>
             <MovieDesc>{props.movie.overview}</MovieDesc>
         </TextContainer>
@@ -39,6 +41,7 @@ const Container = styled.div`
 const TextContainer = styled.div`
   width: 80%;
   margin: 0 10%;
+
 
   @media ${device.desktop}{
     width: 40%;
@@ -70,7 +73,35 @@ const MovieDesc = styled.p`
 
   ${props => props.primary && css`
     color: red;
+    font-weight: bold;
   `}
+`
+
+
+const WatchButton = styled.button`
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    padding: 10px 16px;
+    font-size: 1rem;
+    border-radius: .2rem;
+    transition: all .15s cubic-bezier(0.4,0,0.2,1);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ae0000;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+
+    &:active {
+      position: relative;
+      top: 1px;
+      right: 1px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      }
+
+    
 `
 
 

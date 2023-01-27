@@ -6,8 +6,6 @@ import { device } from '../data/devices'
 
 
 function Movie(props) {
-
-
   return (
     <Container>
       <ImageContainer>

@@ -42,7 +42,6 @@ function Home() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -59,9 +58,7 @@ function Home() {
           <p>Unable to fetch data...</p>
         )}
 
-
-      {
-        loading && 
+      {loading && 
         <Loader>
           <Rings
             height="80"
@@ -75,9 +72,6 @@ function Home() {
           />
         </Loader>
       }
-
-
-
     </Container>
   )
 }
