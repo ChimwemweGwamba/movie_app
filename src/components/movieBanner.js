@@ -4,13 +4,14 @@ import { device } from '../data/devices'
 
 
 
-function Banner(props) {
+function MovieBanner(props) {
 
   return (
     <Container backgroundImg={{ url:'https://image.tmdb.org/t/p/original' + props.movie.backdrop_path}}>
-        <TextContainer>
-            <MovieDesc  primary>Today's Top Pick</MovieDesc>
+        <ImgContainer>
 
+        </ImgContainer>
+        <TextContainer>
             <MovieTitle>{props.movie.title}</MovieTitle>
             <MovieDesc>{props.movie.overview}</MovieDesc>
         </TextContainer>
@@ -26,7 +27,7 @@ const Container = styled.div`
 
   display: flex;
   align-items: center;
-  background-image: linear-gradient(90deg, rgba(0,0,0,0.8496586134453782) 20%, rgba(255,255,255,0) 80%), linear-gradient(0deg, rgba(0,0,0,0.6496586134453782) 5%, rgba(255,255,255,0) 91%), url('${props => props.backgroundImg.url}'); 
+  background-image: url('${props => props.backgroundImg.url}'); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,6 +35,19 @@ const Container = styled.div`
 
   @media ${device.desktop}{
     height: 95vh;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+`
+
+const ImgContainer = styled.div`
+  width: 80%;
+  margin: 0 10%;
+
+  @media ${device.desktop}{
+    width: 30%;
+    margin: 0;
+    border: solid 1px red;
   }
 `
 
@@ -41,10 +55,10 @@ const TextContainer = styled.div`
   width: 80%;
   margin: 0 10%;
 
-
   @media ${device.desktop}{
-    width: 40%;
-    margin: 0 5%;
+    width: 60%;
+    margin: 0;
+    border: solid 1px red;
   }
 `
 
@@ -69,11 +83,6 @@ const MovieDesc = styled.p`
   @media ${device.desktop}{
     text-align: left;
   }
-
-  ${props => props.primary && css`
-    color: red;
-    font-weight: bold;
-  `}
 `
 
 
@@ -104,4 +113,4 @@ const WatchButton = styled.button`
 `
 
 
-export default Banner
+export default MovieBanner
