@@ -12,7 +12,7 @@ function MovieBanner(props) {
         <ImageContainer>
           <MovieImage src={'https://image.tmdb.org/t/p/w500' + props.movie.poster_path}></MovieImage>
         </ImageContainer>
-        
+       
         <TextContainer>
             <MovieTitle>{props.movie.title}</MovieTitle>
             <MovieDesc>{props.movie.overview}</MovieDesc>
