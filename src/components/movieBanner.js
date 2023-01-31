@@ -1,6 +1,7 @@
 import React from 'react'
 import styled , { css } from 'styled-components'
 import { device } from '../data/devices'
+import Rating from './rating'
 
 
 
@@ -8,12 +9,17 @@ function MovieBanner(props) {
 
   return (
     <Container backgroundImg={{ url:'https://image.tmdb.org/t/p/original' + props.movie.backdrop_path}}>
-        <ImgContainer>
-
-        </ImgContainer>
+        <ImageContainer>
+          <MovieImage src={'https://image.tmdb.org/t/p/w500' + props.movie.poster_path}></MovieImage>
+        </ImageContainer>
+        
         <TextContainer>
             <MovieTitle>{props.movie.title}</MovieTitle>
             <MovieDesc>{props.movie.overview}</MovieDesc>
+            <Rating ratings = {props.movie.vote_average * 10} 
+                  ratingsColor = {props.movie.vote_average >= 8.0 ? 
+                                'green' : props.movie.vote_average >= 6.5 ? 
+                                'orange' : 'red'}/>
         </TextContainer>
     </Container>
   )
@@ -40,23 +46,21 @@ const Container = styled.div`
   }
 `
 
-const ImgContainer = styled.div`
-  width: 80%;
-  margin: 0 10%;
-
-  @media ${device.desktop}{
-    width: 30%;
-    margin: 0;
-    border: solid 1px red;
-  }
+const ImageContainer = styled.div`
+  width: 25%;
+  position: relative;
+  border: solid 1px red;
 `
+const MovieImage = styled.img`
+    width: 100%;
+`;
 
 const TextContainer = styled.div`
   width: 80%;
   margin: 0 10%;
 
   @media ${device.desktop}{
-    width: 60%;
+    width: 55%;
     margin: 0;
     border: solid 1px red;
   }

@@ -19,9 +19,10 @@ function Rating(props) {
 
 
 const Container = styled.div`
-height: 40px;
-width: 40px;
+height: 35px;
+width: 35px;
 border-radius: 50%;
+padding: 3px;
 background: ${props => props.color.main};
 display: flex;
 align-items: center;
@@ -31,7 +32,7 @@ justify-content: center;
 const RatingValue = styled.p`
 color: white;
 font-weight: bold;
-font-size: 13px;
+font-size: 10px;
 `
 
 export default Rating

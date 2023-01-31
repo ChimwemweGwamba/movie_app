@@ -19,6 +19,7 @@ function ViewMovie(props) {
       try {
         const response = await fetch(url)
         const responseJson = await response.json()
+        console.log(responseJson)
         setMovie(responseJson)
         setLoading(false)
       } catch (e) {
