@@ -30,10 +30,9 @@ function MovieBanner(props) {
 const Container = styled.div`
   height: 95vh;
   width:100%;
-
   display: flex;
   align-items: center;
-  background-image: url('${props => props.backgroundImg.url}'); 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${props => props.backgroundImg.url}'); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -49,7 +48,6 @@ const Container = styled.div`
 const ImageContainer = styled.div`
   width: 25%;
   position: relative;
-  border: solid 1px red;
 `
 const MovieImage = styled.img`
     width: 100%;
@@ -62,7 +60,6 @@ const TextContainer = styled.div`
   @media ${device.desktop}{
     width: 55%;
     margin: 0;
-    border: solid 1px red;
   }
 `
 
