@@ -31,8 +31,9 @@ const Container = styled.div`
   height: 95vh;
   width:100%;
   display: flex;
+
   align-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${props => props.backgroundImg.url}'); 
+  background-image:  url('${props => props.backgroundImg.url}'); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
