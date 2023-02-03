@@ -17,7 +17,6 @@ function Home() {
     try {
       const response = await fetch(url);
       const responseJson = await response.json();
-
       setMovies((prev) => [...prev, ...responseJson.results]);
       setLoading(false);
     } catch (e) {
@@ -45,37 +44,35 @@ function Home() {
   }, []);
 
   return (
-    <Container>
-      <Navbar></Navbar>
+    <MovieListContext.Provider value={movies}>
+      <Container>
+        <Navbar></Navbar>
 
-      {movies.length > 0 ? (
-        <div>
-          <HomeBanner movie={movies[0]} />
-          <Movies
-            movies={movies}
-            heading={"Top Popular Movies"}
-            subHeading={"POPULAR"}
-          />
-        </div>
-      ) : (
-        <p>Unable to fetch data...</p>
-      )}
+        {movies.length > 0 ? (
+          <div>
+            <HomeBanner/>
+            <Movies/>
+          </div>
+        ) : (
+          <p>Unable to fetch data...</p>
+        )}
 
-      {loading && (
-        <Loader>
-          <Rings
-            height="80"
-            width="80"
-            color="#4fa94d"
-            radius="6"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            ariaLabel="rings-loading"
-          />
-        </Loader>
-      )}
-    </Container>
+        {loading && (
+          <Loader>
+            <Rings
+              height="80"
+              width="80"
+              color="#4fa94d"
+              radius="6"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="rings-loading"
+            />
+          </Loader>
+        )}
+      </Container>
+    </MovieListContext.Provider>
   );
 }
 

@@ -1,15 +1,19 @@
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Movie from "./movie";
 import { device } from "../data/devices";
+import MovieListContext from "../context/movieList";
 
-function Movies(props) {
+function Movies() {
+  const movies = useContext(MovieListContext);
+
   return (
     <Container>
-      <SubHeading>{props.subHeading}</SubHeading>
-      <Heading>{props.heading}</Heading>
+      <SubHeading>POPULAR</SubHeading>
+      <Heading>Top Popular Movies</Heading>
 
       <MovieContainer>
-        {props.movies.map((movie, index) => (
+        {movies.map((movie, index) => (
           <Movie movie={movie} key={movie.id}></Movie>
         ))}
       </MovieContainer>
