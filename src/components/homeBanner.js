@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { device } from "../data/devices";
-import MovieListContext from "../context/movieList";
+import { useMovieList } from "../context/movieList";
+
 
 function HomeBanner() {
-  const MovieList = useContext(MovieListContext);
+  const MovieList = useMovieList()
 
   return (
     <Container

@@ -1,5 +1,7 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 
 const MovieListContext = createContext();
 
-export default MovieListContext;
+const useMovieList = () => useContext(MovieListContext);
+
+export { MovieListContext, useMovieList };

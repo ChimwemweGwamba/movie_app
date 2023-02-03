@@ -4,7 +4,7 @@ import styled from "styled-components";
 import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
 import Navbar from "../components/navbar";
-import MovieListContext from "../context/movieList";
+import { MovieListContext } from "../context/movieList";
 
 function Home() {
   const [movies, setMovies] = useState([]);

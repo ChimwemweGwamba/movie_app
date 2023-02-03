@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import Movie from "./movie";
 import { device } from "../data/devices";
-import MovieListContext from "../context/movieList";
+import { useMovieList } from "../context/movieList";
 
 function Movies() {
-  const movies = useContext(MovieListContext);
+  const movies = useMovieList();
 
   return (
     <Container>
