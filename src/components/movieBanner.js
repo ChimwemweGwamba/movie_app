@@ -17,7 +17,7 @@ function MovieBanner(props) {
       </ImageContainer>
 
       <TextContainer>
-        <MovieTitle>{props.movie.title}</MovieTitle>
+        <MovieTitle>{`${props.movie.title} (${props.movie.release_date})`}</MovieTitle>
         <MovieDesc>{props.movie.overview}</MovieDesc>
         <Rating
           ratings={Math.round(props.movie.vote_average * 10)}
@@ -45,6 +45,9 @@ const Container = styled.div`
   background-size: cover;
   position: relative;
 
+  background-color: #393939;
+  background-blend-mode: multiply;
+
   @media ${device.desktop} {
     height: 95vh;
     flex-direction: row;
@@ -70,15 +73,15 @@ const TextContainer = styled.div`
   }
 `;
 
-const MovieTitle = styled.h1`
-  font-size: 35px;
-  font-weight: 900;
+const MovieTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 700;
   text-align: center;
   color: white;
 
   @media ${device.desktop} {
     text-align: left;
-    font-size: 50px;
+    font-size: 30px;
   }
 `;
 

@@ -7,7 +7,7 @@ import MovieBanner from "../components/movieBanner";
 function ViewMovie(props) {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
-  let movie_id = 315162;
+  let movie_id = 22;
 
   const getMovie = async () => {
     const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}`;
