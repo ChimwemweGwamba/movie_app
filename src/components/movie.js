@@ -92,12 +92,12 @@ const MovieTitle = styled.p`
   font-size: 25px;
   margin: 0;
   width: 80%;
-  font-weight: bold;
+  font-weight: 600;
   text-overflow: ellipsis;
   overflow: hidden;
 
   @media ${device.desktop} {
-    font-size: 20px;
+    font-size: 17px;
   }
 `;
 

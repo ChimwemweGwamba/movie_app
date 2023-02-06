@@ -353,7 +353,7 @@ function SimilarMovies() {
 
       <MoviesContainer>
         {results.map((movie) => (
-          <Link to="/movie" style={{ textDecoration: "none" }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <MovieContainer>
               <MovieImage
                 src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
@@ -376,7 +376,8 @@ const MoviesContainer = styled.h5`
   padding: 10px;
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const SectionTitle = styled.h4`
