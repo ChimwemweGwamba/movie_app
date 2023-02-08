@@ -18,6 +18,7 @@ function ViewMovie() {
       const response = await fetch(url);
       const responseJson = await response.json();
       setMovie(responseJson);
+      window.scrollTo(0, 0);
       setLoading(false);
     } catch (e) {
       console.log("error: ", e);
@@ -26,7 +27,7 @@ function ViewMovie() {
 
   useEffect(() => {
     getMovie();
-  }, []);
+  }, [location.state]);
 
   return (
     <MovieContext.Provider value={movie}>
