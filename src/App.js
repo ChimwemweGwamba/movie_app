@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/liked" element={<Favourites />} />
-          <Route path="/movie" element={<ViewMovie />} />
+          <Route path="/movie/:movieId" element={<ViewMovie />} />
         </Routes>
       </BrowserRouter>
     </div>

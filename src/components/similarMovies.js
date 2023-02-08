@@ -32,7 +32,12 @@ function SimilarMovies(props) {
       {similarMovies && (
         <MoviesContainer>
           {similarMovies.map((movie) => (
-            <Link to="/" style={{ textDecoration: "none" }} key={movie.id}>
+            <Link
+              to={"/movie/" + movie.id}
+              style={{ textDecoration: "none" }}
+              state={movie.id}
+              key={movie.id}
+            >
               <MovieContainer>
                 <MovieImage
                   src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}

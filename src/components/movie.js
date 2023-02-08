@@ -7,10 +7,14 @@ import { device } from "../devices/devices";
 function Movie(props) {
   return (
     <Container>
-      <Link to="/movie" state={props.movie.id} style={{ textDecoration: 'none' }}>
+      <Link
+        to={"/movie/" + props.movie.id}
+        state={props.movie.id}
+        style={{ textDecoration: "none" }}
+      >
         <ImageContainer>
           <MovieImage
-            src={ "https://image.tmdb.org/t/p/w500" + props.movie.poster_path }
+            src={"https://image.tmdb.org/t/p/w500" + props.movie.poster_path}
           ></MovieImage>
           <MovieDesc>{props.movie.overview}</MovieDesc>
         </ImageContainer>
