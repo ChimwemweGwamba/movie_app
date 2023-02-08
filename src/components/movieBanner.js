@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { device } from "../devices/devices";
 import Rating from "./rating";
@@ -6,6 +6,7 @@ import SimilarMovies from "./similarMovies";
 import { useMovie } from "../context/movieContext";
 
 function MovieBanner() {
+  
   const Movie = useMovie();
 
   return (

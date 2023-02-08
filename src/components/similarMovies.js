@@ -70,9 +70,9 @@ const Container = styled.div`
 const MoviesContainer = styled.h5`
   padding: 10px;
   display: flex;
-  flex-direction: row;
-  overflow-y: auto;
-  overflow-x: hidden;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const SectionTitle = styled.h4`
@@ -84,8 +84,8 @@ const SectionTitle = styled.h4`
 const MovieContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 12.5vw;
-  margin-right: 30px;
+  width: 13vw;
+  margin: 10px;
 `;
 
 const MovieImage = styled.img`
@@ -94,7 +94,7 @@ const MovieImage = styled.img`
 
 const MovieTitle = styled.p`
   color: white;
-  font-size: 12px;
+  font-size: 10px;
   padding: 10px 0;
   margin: 0;
   width: 100%;
