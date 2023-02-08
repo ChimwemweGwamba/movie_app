@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Rating from "./rating";
-import { device } from "../data/devices";
+import { device } from "../devices/devices";
 
 function Movie(props) {
   return (

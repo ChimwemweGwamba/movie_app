@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "../data/devices";
+import { device } from "../devices/devices";
 import Rating from "./rating";
 import SimilarMovies from "./similarMovies";
 
