@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { device } from "../data/devices";
+import { device } from "../devices/devices";
 
 function SimilarMovies() {
   const results = [
