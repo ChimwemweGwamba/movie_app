@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { device } from "../devices/devices";
 import Rating from "./rating";
@@ -9,38 +9,40 @@ function MovieBanner() {
   const Movie = useMovie();
 
   return (
-    <Container
-      backgroundImg={{
-        url: "https://image.tmdb.org/t/p/original" + Movie.backdrop_path,
-      }}
-    >
-      <TopSection>
-        <ImageContainer>
-          <MovieImage
-            src={"https://image.tmdb.org/t/p/w500" + Movie.poster_path}
-          ></MovieImage>
-        </ImageContainer>
+    Movie && (
+      <Container
+        backgroundImg={{
+          url: "https://image.tmdb.org/t/p/original" + Movie.backdrop_path,
+        }}
+      >
+        <TopSection>
+          <ImageContainer>
+            <MovieImage
+              src={"https://image.tmdb.org/t/p/w500" + Movie.poster_path}
+            ></MovieImage>
+          </ImageContainer>
 
-        <TextContainer>
-          <MovieTitle>{`${Movie.title} (${Movie.release_date})`}</MovieTitle>
-          <MovieDesc>{Movie.overview}</MovieDesc>
-          <Rating
-            ratings={Math.round(Movie.vote_average * 10)}
-            ratingsColor={
-              Movie.vote_average >= 8.0
-                ? "green"
-                : Movie.vote_average >= 6.5
-                ? "orange"
-                : "red"
-            }
-          />
-        </TextContainer>
-      </TopSection>
+          <TextContainer>
+            <MovieTitle>{`${Movie.title} (${Movie.release_date})`}</MovieTitle>
+            <MovieDesc>{Movie.overview}</MovieDesc>
+            <Rating
+              ratings={Math.round(Movie.vote_average * 10)}
+              ratingsColor={
+                Movie.vote_average >= 8.0
+                  ? "green"
+                  : Movie.vote_average >= 6.5
+                  ? "orange"
+                  : "red"
+              }
+            />
+          </TextContainer>
+        </TopSection>
 
-      <SimilarMoviesContainer>
-        <SimilarMovies />
-      </SimilarMoviesContainer>
-    </Container>
+        <SimilarMoviesContainer>
+          <SimilarMovies movieId={Movie.id} />
+        </SimilarMoviesContainer>
+      </Container>
+    )
   );
 }
 
@@ -49,7 +51,6 @@ const Container = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-
   background-image: url("${(props) => props.backgroundImg.url}");
   background-position: center;
   background-repeat: no-repeat;

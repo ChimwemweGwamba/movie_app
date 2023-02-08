@@ -3,9 +3,8 @@ import styled, { css } from "styled-components";
 import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
-
 function HomeBanner() {
-  const MovieList = useMovieList()
+  const MovieList = useMovieList();
 
   return (
     <Container

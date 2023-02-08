@@ -6,7 +6,7 @@ import MovieBanner from "../components/movieBanner";
 import { useLocation } from "react-router-dom";
 import { MovieContext } from "../context/movieContext";
 
-function ViewMovie(props) {
+function ViewMovie() {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
@@ -33,12 +33,10 @@ function ViewMovie(props) {
       <Container>
         <Navbar></Navbar>
 
-        {movie ? (
+        {movie && (
           <div>
-            <MovieBanner/>
+            <MovieBanner />
           </div>
-        ) : (
-          <p>Unable to fetch data...</p>
         )}
 
         {loading && (

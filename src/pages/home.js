@@ -51,8 +51,8 @@ function Home() {
 
         {movies.length > 0 ? (
           <div>
-            <HomeBanner/>
-            <Movies/>
+            <HomeBanner />
+            <Movies />
           </div>
         ) : (
           <p>Unable to fetch data...</p>
