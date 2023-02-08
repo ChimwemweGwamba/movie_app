@@ -353,7 +353,7 @@ function SimilarMovies() {
 
       <MoviesContainer>
         {results.map((movie) => (
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/" style={{ textDecoration: "none" }} key={movie.id}>
             <MovieContainer>
               <MovieImage
                 src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}

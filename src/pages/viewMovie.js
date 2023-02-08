@@ -3,19 +3,19 @@ import { Rings } from "react-loader-spinner";
 import styled from "styled-components";
 import Navbar from "../components/navbar";
 import MovieBanner from "../components/movieBanner";
+import { useLocation } from "react-router-dom";
 
 function ViewMovie(props) {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
-  let movie_id = 22;
+  const location = useLocation();
 
   const getMovie = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}`;
+    const url = `https://api.themoviedb.org/3/movie/${location.state}?api_key=${process.env.REACT_APP_API_KEY}`;
 
     try {
       const response = await fetch(url);
       const responseJson = await response.json();
-      console.log(responseJson);
       setMovie(responseJson);
       setLoading(false);
     } catch (e) {
