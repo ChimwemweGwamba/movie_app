@@ -4,7 +4,7 @@ import styled from "styled-components";
 import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
 import Navbar from "../components/navbar";
-import { MovieListContext } from "../context/movieList";
+import { MovieListContext } from "../context/movieContext";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -24,6 +24,7 @@ function Home() {
     }
   };
 
+  //Fetch new page of movies on scroll
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >=

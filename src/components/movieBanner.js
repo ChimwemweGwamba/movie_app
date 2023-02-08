@@ -3,30 +3,33 @@ import styled from "styled-components";
 import { device } from "../devices/devices";
 import Rating from "./rating";
 import SimilarMovies from "./similarMovies";
+import { useMovie } from "../context/movieContext";
 
-function MovieBanner(props) {
+function MovieBanner() {
+  const Movie = useMovie();
+
   return (
     <Container
       backgroundImg={{
-        url: "https://image.tmdb.org/t/p/original" + props.movie.backdrop_path,
+        url: "https://image.tmdb.org/t/p/original" + Movie.backdrop_path,
       }}
     >
       <TopSection>
         <ImageContainer>
           <MovieImage
-            src={"https://image.tmdb.org/t/p/w500" + props.movie.poster_path}
+            src={"https://image.tmdb.org/t/p/w500" + Movie.poster_path}
           ></MovieImage>
         </ImageContainer>
 
         <TextContainer>
-          <MovieTitle>{`${props.movie.title} (${props.movie.release_date})`}</MovieTitle>
-          <MovieDesc>{props.movie.overview}</MovieDesc>
+          <MovieTitle>{`${Movie.title} (${Movie.release_date})`}</MovieTitle>
+          <MovieDesc>{Movie.overview}</MovieDesc>
           <Rating
-            ratings={Math.round(props.movie.vote_average * 10)}
+            ratings={Math.round(Movie.vote_average * 10)}
             ratingsColor={
-              props.movie.vote_average >= 8.0
+              Movie.vote_average >= 8.0
                 ? "green"
-                : props.movie.vote_average >= 6.5
+                : Movie.vote_average >= 6.5
                 ? "orange"
                 : "red"
             }

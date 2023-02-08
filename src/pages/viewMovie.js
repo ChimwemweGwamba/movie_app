@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Navbar from "../components/navbar";
 import MovieBanner from "../components/movieBanner";
 import { useLocation } from "react-router-dom";
+import { MovieContext } from "../context/movieContext";
 
 function ViewMovie(props) {
   const [movie, setMovie] = useState([]);
@@ -28,32 +29,34 @@ function ViewMovie(props) {
   }, []);
 
   return (
-    <Container>
-      <Navbar></Navbar>
+    <MovieContext.Provider value={movie}>
+      <Container>
+        <Navbar></Navbar>
 
-      {movie ? (
-        <div>
-          <MovieBanner movie={movie} />
-        </div>
-      ) : (
-        <p>Unable to fetch data...</p>
-      )}
+        {movie ? (
+          <div>
+            <MovieBanner/>
+          </div>
+        ) : (
+          <p>Unable to fetch data...</p>
+        )}
 
-      {loading && (
-        <Loader>
-          <Rings
-            height="80"
-            width="80"
-            color="#4fa94d"
-            radius="6"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            ariaLabel="rings-loading"
-          />
-        </Loader>
-      )}
-    </Container>
+        {loading && (
+          <Loader>
+            <Rings
+              height="80"
+              width="80"
+              color="#4fa94d"
+              radius="6"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="rings-loading"
+            />
+          </Loader>
+        )}
+      </Container>
+    </MovieContext.Provider>
   );
 }
 

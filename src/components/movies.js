@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Movie from "./movie";
 import { device } from "../devices/devices";
-import { useMovieList } from "../context/movieList";
+import { useMovieList } from "../context/movieContext";
 
 function Movies() {
   const movies = useMovieList();
