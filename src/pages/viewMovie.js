@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Rings } from "react-loader-spinner";
 import styled from "styled-components";
-import Navbar from "../components/navbar";
 import MovieBanner from "../components/movieBanner";
 import { useLocation } from "react-router-dom";
 import { MovieContext } from "../context/movieContext";
@@ -32,8 +31,6 @@ function ViewMovie() {
   return (
     <MovieContext.Provider value={movie}>
       <Container>
-        <Navbar></Navbar>
-
         {movie && (
           <div>
             <MovieBanner />

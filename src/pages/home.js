@@ -3,7 +3,6 @@ import { Rings } from "react-loader-spinner";
 import styled from "styled-components";
 import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
-import Navbar from "../components/navbar";
 import { MovieListContext } from "../context/movieContext";
 
 function Home() {
@@ -47,8 +46,6 @@ function Home() {
   return (
     <MovieListContext.Provider value={movies}>
       <Container>
-        <Navbar></Navbar>
-
         {movies.length > 0 ? (
           <div>
             <HomeBanner />
