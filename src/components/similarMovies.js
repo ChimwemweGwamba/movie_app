@@ -3,18 +3,25 @@ import { Rings } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { device } from "../devices/devices";
+import { useMovieList } from "../context/movieContext";
+
 
 function SimilarMovies(props) {
-  const [similarMovies, setSimilarMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { dispatch, state: { selectedMovieID, similarMovies } } = useMovieList();
 
   const getSimilarMovies = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${props.movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
+    const url = `https://api.themoviedb.org/3/movie/${selectedMovieID}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
 
     try {
       const response = await fetch(url);
       const responseJson = await response.json();
-      setSimilarMovies(responseJson.results);
+
+      dispatch({
+        type: "SET_SIMILAR_MOVIES",
+        payload: responseJson.results,
+      });
+
       setLoading(false);
     } catch (e) {
       console.log("error: ", e);
@@ -23,7 +30,7 @@ function SimilarMovies(props) {
 
   useEffect(() => {
     getSimilarMovies();
-  }, [props.movieId]);
+  }, []);
 
   return (
     <Container>

@@ -6,7 +6,6 @@ import Movies from "../components/movies";
 import { useMovieList } from "../context/movieContext";
 
 
-
 function Home() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);

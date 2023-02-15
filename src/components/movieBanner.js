@@ -2,48 +2,50 @@ import React from "react";
 import styled from "styled-components";
 import { device } from "../devices/devices";
 import Rating from "./rating";
-import SimilarMovies from "./similarMovies";
-import { useMovie } from "../context/movieContext";
+import { useMovieList } from "../context/movieContext";
 
 function MovieBanner() {
-  
-  const Movie = useMovie();
+  const {
+    dispatch,
+    state: { selectedMovie },
+  } = useMovieList();
+
+  console.log(selectedMovie);
 
   return (
-    Movie && (
-      <Container
-        backgroundImg={{
-          url: "https://image.tmdb.org/t/p/original" + Movie.backdrop_path,
-        }}
-      >
-        <TopSection>
-          <ImageContainer>
-            <MovieImage
-              src={"https://image.tmdb.org/t/p/w500" + Movie.poster_path}
-            ></MovieImage>
-          </ImageContainer>
+    <Container
+      backgroundImg={{
+        url:
+          "https://image.tmdb.org/t/p/original" + selectedMovie.backdrop_path,
+      }}
+    >
+      <TopSection>
+        <ImageContainer>
+          <MovieImage
+            src={"https://image.tmdb.org/t/p/w500" + selectedMovie.poster_path}
+          ></MovieImage>
+        </ImageContainer>
 
-          <TextContainer>
-            <MovieTitle>{`${Movie.title} (${Movie.release_date})`}</MovieTitle>
-            <MovieDesc>{Movie.overview}</MovieDesc>
-            <Rating
-              ratings={Math.round(Movie.vote_average * 10)}
-              ratingsColor={
-                Movie.vote_average >= 8.0
-                  ? "green"
-                  : Movie.vote_average >= 6.5
-                  ? "orange"
-                  : "red"
-              }
-            />
-          </TextContainer>
-        </TopSection>
+        <TextContainer>
+          <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date})`}</MovieTitle>
+          <MovieDesc>{selectedMovie.overview}</MovieDesc>
+          <Rating
+            ratings={Math.round(selectedMovie.vote_average * 10)}
+            ratingsColor={
+              selectedMovie.vote_average >= 8.0
+                ? "green"
+                : selectedMovie.vote_average >= 6.5
+                ? "orange"
+                : "red"
+            }
+          />
+        </TextContainer>
+      </TopSection>
 
-        {/* <SimilarMoviesContainer>
+      {/* <SimilarMoviesContainer>
           <SimilarMovies movieId={Movie.id} />
         </SimilarMoviesContainer> */}
-      </Container>
-    )
+    </Container>
   );
 }
 

@@ -6,13 +6,19 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
 function Movie(props) {
-  const { state: { movieList } } = useMovieList();
+  const { dispatch } = useMovieList();
 
   return (
     <Container>
       <Link
-        to={"/movie/" + movieList[0].id}
+        to={"/movie/" + props.movie.id}
         style={{ textDecoration: "none" }}
+        onClick={() => {
+          dispatch({
+            type: "SET_SELECTED_MOVIE_ID",
+            payload: props.movie.id,
+          });
+        }}
       >
         <ImageContainer>
           <MovieImage
