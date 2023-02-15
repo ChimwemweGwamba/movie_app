@@ -5,7 +5,7 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
 function Movies() {
-  const movies = useMovieList();
+  const { state: { movieList }} = useMovieList();
 
   return (
     <Container>
@@ -13,7 +13,7 @@ function Movies() {
       <Heading>Top Popular Movies</Heading>
 
       <MovieContainer>
-        {movies.map((movie, index) => (
+        {movieList.map((movie, index) => (
           <Movie movie={movie} key={movie.id}></Movie>
         ))}
       </MovieContainer>

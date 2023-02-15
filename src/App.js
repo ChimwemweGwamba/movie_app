@@ -15,7 +15,7 @@ const movieReducer = (state, action) => {
     case "SET_POPULAR_MOVIES":
       return {
         ...state,
-        filter: action.payload,
+        selectedMovie: action.payload,
       };
     default:
       throw new Error("No action");

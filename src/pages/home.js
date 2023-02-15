@@ -6,8 +6,8 @@ import Movies from "../components/movies";
 import { MovieListContext } from "../context/movieContext";
 import { movieReducer } from "../App";
 
+
 function Home() {
-  const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [state, dispatch] = useReducer(movieReducer, {
@@ -27,7 +27,7 @@ function Home() {
         payload: responseJson.results,
       });
 
-      setMovies((prev) => [...prev, ...responseJson.results]);
+      // setMovies((prev) => [...prev, ...responseJson.results]);
       setLoading(false);
     } catch (e) {
       console.log("error: ", e);
@@ -55,16 +55,14 @@ function Home() {
   }, []);
 
   return (
-    <MovieListContext.Provider value={{ movies, state }}>
+    <MovieListContext.Provider value={{ state }}>
       <Container>
-
-
-        {state.movieList &&
-        ( <HomeBanner /> )}
-
-        
-        
-        {/* <Movies /> */}
+        {state.movieList && (
+          <div>
+            <HomeBanner />
+            <Movies />
+          </div>
+        )}
 
         {loading && (
           <Loader>
