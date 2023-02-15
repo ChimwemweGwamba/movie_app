@@ -4,18 +4,20 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
 function HomeBanner() {
-  const MovieList = useMovieList();
+  const {
+    state: { movieList }
+  } = useMovieList();
 
   return (
     <Container
       backgroundImg={{
-        url: "https://image.tmdb.org/t/p/original" + MovieList[0].backdrop_path,
+        url: "https://image.tmdb.org/t/p/original" +  movieList[0].backdrop_path,
       }}
     >
       <TextContainer>
         <MovieDesc primary>Our Top Pick</MovieDesc>
-        <MovieTitle>{MovieList[0].title}</MovieTitle>
-        <MovieDesc>{MovieList[0].overview}</MovieDesc>
+        <MovieTitle>{movieList[0].title}</MovieTitle>
+        <MovieDesc>{movieList[0].overview}</MovieDesc>
       </TextContainer>
     </Container>
   );

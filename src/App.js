@@ -4,6 +4,24 @@ import Home from "./pages/home";
 import Favourites from "./pages/favourites";
 import ViewMovie from "./pages/viewMovie";
 
+const movieReducer = (state, action) => {
+ // console.log("app page", action.payload);
+  switch (action.type) {
+    case "SET_MOVIE_LIST":
+      return {
+        ...state,
+        movieList: action.payload,
+      };
+    case "SET_POPULAR_MOVIES":
+      return {
+        ...state,
+        filter: action.payload,
+      };
+    default:
+      throw new Error("No action");
+  }
+};
+
 function App() {
   return (
     <div>
@@ -18,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export { App, movieReducer };
