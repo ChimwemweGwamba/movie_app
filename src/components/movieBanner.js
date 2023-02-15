@@ -3,49 +3,54 @@ import styled from "styled-components";
 import { device } from "../devices/devices";
 import Rating from "./rating";
 import { useMovieList } from "../context/movieContext";
+import SimilarMovies from "./similarMovies";
 
 function MovieBanner() {
   const {
-    dispatch,
     state: { selectedMovie },
   } = useMovieList();
 
-  console.log(selectedMovie);
-
   return (
-    <Container
-      backgroundImg={{
-        url:
-          "https://image.tmdb.org/t/p/original" + selectedMovie.backdrop_path,
-      }}
-    >
-      <TopSection>
-        <ImageContainer>
-          <MovieImage
-            src={"https://image.tmdb.org/t/p/w500" + selectedMovie.poster_path}
-          ></MovieImage>
-        </ImageContainer>
+    <div>
+      {selectedMovie && (
+        <Container
+          backgroundImg={{
+            url:
+              "https://image.tmdb.org/t/p/original" +
+              selectedMovie.backdrop_path,
+          }}
+        >
+          <TopSection>
+            <ImageContainer>
+              <MovieImage
+                src={
+                  "https://image.tmdb.org/t/p/w500" + selectedMovie.poster_path
+                }
+              ></MovieImage>
+            </ImageContainer>
 
-        <TextContainer>
-          <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date})`}</MovieTitle>
-          <MovieDesc>{selectedMovie.overview}</MovieDesc>
-          <Rating
-            ratings={Math.round(selectedMovie.vote_average * 10)}
-            ratingsColor={
-              selectedMovie.vote_average >= 8.0
-                ? "green"
-                : selectedMovie.vote_average >= 6.5
-                ? "orange"
-                : "red"
-            }
-          />
-        </TextContainer>
-      </TopSection>
+            <TextContainer>
+              <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date})`}</MovieTitle>
+              <MovieDesc>{selectedMovie.overview}</MovieDesc>
+              <Rating
+                ratings={Math.round(selectedMovie.vote_average * 10)}
+                ratingsColor={
+                  selectedMovie.vote_average >= 8.0
+                    ? "green"
+                    : selectedMovie.vote_average >= 6.5
+                    ? "orange"
+                    : "red"
+                }
+              />
+            </TextContainer>
+          </TopSection>
 
-      {/* <SimilarMoviesContainer>
-          <SimilarMovies movieId={Movie.id} />
-        </SimilarMoviesContainer> */}
-    </Container>
+          <SimilarMoviesContainer>
+            <SimilarMovies />
+          </SimilarMoviesContainer>
+        </Container>
+      )}
+    </div>
   );
 }
 

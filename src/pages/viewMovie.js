@@ -15,11 +15,9 @@ function ViewMovie() {
       const response = await fetch(url);
       const responseJson = await response.json();
 
-      console.log("results ", responseJson)
-
       dispatch({
         type: "SET_SELECTED_MOVIE",
-        payload: responseJson.results,
+        payload: responseJson,
       });
 
       window.scrollTo(0, 0);

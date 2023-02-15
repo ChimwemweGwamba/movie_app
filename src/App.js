@@ -7,6 +7,7 @@ import { MovieListContext } from "./context/movieContext";
 
 function App() {
   const movieReducer = (state, action) => {
+    console.log("payload", action.payload)
     switch (action.type) {
       case "SET_MOVIE_LIST":
         return {
@@ -35,7 +36,7 @@ function App() {
 
   const [state, dispatch] = useReducer(movieReducer, {
     moviesList: [],
-    selectedMovieID: null,
+    selectedMovieID: [],
     selectedMovie: [],
     similarMovies: [],
   });

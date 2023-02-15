@@ -11,7 +11,7 @@ function SimilarMovies(props) {
   const { dispatch, state: { selectedMovieID, similarMovies } } = useMovieList();
 
   const getSimilarMovies = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${selectedMovieID}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
+   const url = `https://api.themoviedb.org/3/movie/${selectedMovieID}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
 
     try {
       const response = await fetch(url);
