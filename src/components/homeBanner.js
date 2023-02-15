@@ -4,9 +4,7 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
 function HomeBanner() {
-  const {
-    state: { movieList }
-  } = useMovieList();
+  const { state: { movieList } } = useMovieList();
 
   return (
     <Container

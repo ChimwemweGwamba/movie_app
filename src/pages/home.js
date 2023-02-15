@@ -3,18 +3,14 @@ import { Rings } from "react-loader-spinner";
 import styled from "styled-components";
 import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
-import { MovieListContext } from "../context/movieContext";
-import { movieReducer } from "../App";
+import { useMovieList } from "../context/movieContext";
+
 
 
 function Home() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [state, dispatch] = useReducer(movieReducer, {
-    moviesList: [],
-    selectedMovie: [],
-    similarMovies: [],
-  });
+  const { dispatch, state: { movieList } } = useMovieList();
 
   const getMovies = async () => {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`;
@@ -27,7 +23,7 @@ function Home() {
         payload: responseJson.results,
       });
 
-      // setMovies((prev) => [...prev, ...responseJson.results]);
+      //setMovies((prev) => [...prev, ...responseJson.results]);
       setLoading(false);
     } catch (e) {
       console.log("error: ", e);
@@ -55,9 +51,8 @@ function Home() {
   }, []);
 
   return (
-    <MovieListContext.Provider value={{ state }}>
       <Container>
-        {state.movieList && (
+        {movieList && (
           <div>
             <HomeBanner />
             <Movies />
@@ -79,7 +74,6 @@ function Home() {
           </Loader>
         )}
       </Container>
-    </MovieListContext.Provider>
   );
 }
 

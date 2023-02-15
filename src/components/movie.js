@@ -3,13 +3,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Rating from "./rating";
 import { device } from "../devices/devices";
+import { useMovieList } from "../context/movieContext";
 
 function Movie(props) {
+  const { state: { movieList } } = useMovieList();
+
   return (
     <Container>
       <Link
-        to={"/movie/" + props.movie.id}
-        state={props.movie.id}
+        to={"/movie/" + movieList[0].id}
         style={{ textDecoration: "none" }}
       >
         <ImageContainer>

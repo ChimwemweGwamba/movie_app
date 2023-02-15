@@ -39,9 +39,9 @@ function MovieBanner() {
           </TextContainer>
         </TopSection>
 
-        <SimilarMoviesContainer>
+        {/* <SimilarMoviesContainer>
           <SimilarMovies movieId={Movie.id} />
-        </SimilarMoviesContainer>
+        </SimilarMoviesContainer> */}
       </Container>
     )
   );
