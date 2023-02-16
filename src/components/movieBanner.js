@@ -37,7 +37,7 @@ function MovieBanner() {
           </ImageContainer>
 
           <TextContainer>
-            <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date})`}</MovieTitle>
+            <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date.slice(0,4)})`}</MovieTitle>
             <MovieDesc>{selectedMovie.overview}</MovieDesc>
             <Rating
               ratings={Math.round(selectedMovie.vote_average * 10)}
