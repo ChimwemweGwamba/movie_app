@@ -5,7 +5,6 @@ import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
 import { useMovieList } from "../context/movieContext";
 
-
 function Home() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -22,7 +21,6 @@ function Home() {
         payload: responseJson.results,
       });
 
-      //setMovies((prev) => [...prev, ...responseJson.results]);
       setLoading(false);
     } catch (e) {
       console.log("error: ", e);
@@ -50,29 +48,29 @@ function Home() {
   }, []);
 
   return (
-      <Container>
-        {movieList && (
-          <div>
-            <HomeBanner />
-            <Movies />
-          </div>
-        )}
+    <Container>
+      {movieList && (
+        <div>
+          <HomeBanner />
+          <Movies />
+        </div>
+      )}
 
-        {loading && (
-          <Loader>
-            <Rings
-              height="80"
-              width="80"
-              color="#4fa94d"
-              radius="6"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-              ariaLabel="rings-loading"
-            />
-          </Loader>
-        )}
-      </Container>
+      {loading && (
+        <Loader>
+          <Rings
+            height="80"
+            width="80"
+            color="#4fa94d"
+            radius="6"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="rings-loading"
+          />
+        </Loader>
+      )}
+    </Container>
   );
 }
 

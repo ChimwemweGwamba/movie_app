@@ -7,9 +7,12 @@ import { MovieListContext } from "./context/movieContext";
 
 function App() {
   const movieReducer = (state, action) => {
-    console.log("payload", action.payload)
     switch (action.type) {
       case "SET_MOVIE_LIST":
+        if (state.movieList) {
+          action.payload = [...state.movieList, ...action.payload];
+        }
+
         return {
           ...state,
           movieList: action.payload,
@@ -24,11 +27,11 @@ function App() {
           ...state,
           selectedMovie: action.payload,
         };
-        case "SET_SIMILAR_MOVIES":
-          return {
-            ...state,
-            similarMovies: action.payload,
-          };
+      case "SET_SIMILAR_MOVIES":
+        return {
+          ...state,
+          similarMovies: action.payload,
+        };
       default:
         throw new Error("No action");
     }
