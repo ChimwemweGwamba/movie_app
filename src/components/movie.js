@@ -49,7 +49,7 @@ const Container = styled.div`
   width: fit-content;
   margin: 50px 0;
   width: 100%;
-  transition: 0.2s;
+  transition: 0.3s;
 
   &:hover {
     cursor: pointer;
@@ -58,8 +58,8 @@ const Container = styled.div`
 
   @media ${device.desktop} {
     width: fit-content;
-    margin: 50px 2.5% 50px 2.5%;
-    width: 20%;
+    margin: 50px 2%;
+    width: 15%;
   }
 `;
 
@@ -101,15 +101,15 @@ const MovieDesc = styled.p`
 
 const MovieTitle = styled.p`
   color: white;
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: 600;
   margin: 0;
   width: 80%;
-  font-weight: 600;
   text-overflow: ellipsis;
   overflow: hidden;
 
   @media ${device.desktop} {
-    font-size: 17px;
+    font-size: 15px;
   }
 `;
 

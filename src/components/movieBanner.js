@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { device } from "../devices/devices";
-import Rating from "./rating";
 import { useMovieList } from "../context/movieContext";
 import SimilarMovies from "./similarMovies";
 import { Rings } from "react-loader-spinner";
@@ -39,16 +38,6 @@ function MovieBanner() {
           <TextContainer>
             <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date.slice(0,4)})`}</MovieTitle>
             <MovieDesc>{selectedMovie.overview}</MovieDesc>
-            <Rating
-              ratings={Math.round(selectedMovie.vote_average * 10)}
-              ratingsColor={
-                selectedMovie.vote_average >= 8.0
-                  ? "green"
-                  : selectedMovie.vote_average >= 6.5
-                  ? "orange"
-                  : "red"
-              }
-            />
           </TextContainer>
         </TopSection>
       )}
@@ -65,22 +54,26 @@ const Container = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-
-  @media ${device.desktop} {
-  }
 `;
 
 const TopSection = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 100px;
+  padding: 50px 0;
+
+  @media ${device.desktop} {
+    flex-direction: row;
+  }
 `;
 
 const ImageContainer = styled.div`
-  width: 25%;
-  position: relative;
+  width: 50%;
+
+  @media ${device.desktop} {
+    width: 25%;
+  }
 `;
 const MovieImage = styled.img`
   width: 100%;
@@ -120,8 +113,6 @@ const MovieDesc = styled.p`
 `;
 
 const SimilarMoviesContainer = styled.div`
-  @media ${device.desktop} {
-  }
 `;
 
 const Loader = styled.div`

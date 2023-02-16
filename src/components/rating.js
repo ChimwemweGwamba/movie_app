@@ -14,10 +14,10 @@ function Rating(props) {
 }
 
 const Container = styled.div`
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
-  padding: 3px;
+  padding: 2px;
   background: ${(props) => props.color.main};
   display: flex;
   align-items: center;

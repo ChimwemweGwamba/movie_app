@@ -41,6 +41,12 @@ function SimilarMovies(props) {
           {similarMovies.map((movie) => (
             <Link
               to={"/movie/" + movie.id}
+              onClick={() => {
+                dispatch({
+                  type: "SET_SELECTED_MOVIE_ID",
+                  payload: movie.id,
+                });
+              }}
               style={{ textDecoration: "none" }}
               state={movie.id}
               key={movie.id}
@@ -75,19 +81,22 @@ function SimilarMovies(props) {
 }
 
 const Container = styled.div`
+`;
+
+const MoviesContainer = styled.div`
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
   @media ${device.desktop} {
+    flex-direction: row;
   }
 `;
 
-const MoviesContainer = styled.h5`
-  padding: 10px;
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const SectionTitle = styled.h4`
+const SectionTitle = styled.h1`
   color: white;
   font-weight: bold;
   text-align: center;
@@ -96,8 +105,14 @@ const SectionTitle = styled.h4`
 const MovieContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 13vw;
-  margin: 10px;
+  width: 70%;
+  margin: 20px auto;
+
+  @media ${device.desktop} {
+    width: 150px;
+    padding: 30px 0;
+    margin: 0px 20px;
+  }
 `;
 
 const MovieImage = styled.img`
@@ -106,8 +121,8 @@ const MovieImage = styled.img`
 
 const MovieTitle = styled.p`
   color: white;
-  font-size: 10px;
-  padding: 10px 0;
+  font-size: 18px;
+  padding: 15px 0;
   margin: 0;
   width: 100%;
   text-overflow: ellipsis;
@@ -116,6 +131,8 @@ const MovieTitle = styled.p`
   background-color: black;
 
   @media ${device.desktop} {
+    font-size: 13px;
+    padding: 10px 0;
   }
 `;
 
