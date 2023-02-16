@@ -4,6 +4,7 @@ import { device } from "../devices/devices";
 import Rating from "./rating";
 import { useMovieList } from "../context/movieContext";
 import SimilarMovies from "./similarMovies";
+import { Rings } from "react-loader-spinner";
 
 function MovieBanner() {
   const {
@@ -11,46 +12,51 @@ function MovieBanner() {
   } = useMovieList();
 
   return (
-    <div>
-      {selectedMovie && (
-        <Container
-          backgroundImg={{
-            url:
-              "https://image.tmdb.org/t/p/original" +
-              selectedMovie.backdrop_path,
-          }}
-        >
-          <TopSection>
-            <ImageContainer>
-              <MovieImage
-                src={
-                  "https://image.tmdb.org/t/p/w500" + selectedMovie.poster_path
-                }
-              ></MovieImage>
-            </ImageContainer>
+    <Container>
+      {selectedMovie.length === 0 ? (
+        <Loader>
+          <Rings
+            height="80"
+            width="80"
+            color="#4fa94d"
+            radius="6"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="rings-loading"
+          />
+        </Loader>
+      ) : (
+        <TopSection>
+          <ImageContainer>
+            <MovieImage
+              src={
+                "https://image.tmdb.org/t/p/w500" + selectedMovie.poster_path
+              }
+            ></MovieImage>
+          </ImageContainer>
 
-            <TextContainer>
-              <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date})`}</MovieTitle>
-              <MovieDesc>{selectedMovie.overview}</MovieDesc>
-              <Rating
-                ratings={Math.round(selectedMovie.vote_average * 10)}
-                ratingsColor={
-                  selectedMovie.vote_average >= 8.0
-                    ? "green"
-                    : selectedMovie.vote_average >= 6.5
-                    ? "orange"
-                    : "red"
-                }
-              />
-            </TextContainer>
-          </TopSection>
-
-          <SimilarMoviesContainer>
-            <SimilarMovies />
-          </SimilarMoviesContainer>
-        </Container>
+          <TextContainer>
+            <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date})`}</MovieTitle>
+            <MovieDesc>{selectedMovie.overview}</MovieDesc>
+            <Rating
+              ratings={Math.round(selectedMovie.vote_average * 10)}
+              ratingsColor={
+                selectedMovie.vote_average >= 8.0
+                  ? "green"
+                  : selectedMovie.vote_average >= 6.5
+                  ? "orange"
+                  : "red"
+              }
+            />
+          </TextContainer>
+        </TopSection>
       )}
-    </div>
+
+      <SimilarMoviesContainer>
+        <SimilarMovies />
+      </SimilarMoviesContainer>
+    </Container>
   );
 }
 
@@ -59,13 +65,6 @@ const Container = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  background-image: url("${(props) => props.backgroundImg.url}");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  background-color: #393939;
-  background-blend-mode: multiply;
 
   @media ${device.desktop} {
   }
@@ -123,6 +122,11 @@ const MovieDesc = styled.p`
 const SimilarMoviesContainer = styled.div`
   @media ${device.desktop} {
   }
+`;
+
+const Loader = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export default MovieBanner;
