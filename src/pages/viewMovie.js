@@ -11,7 +11,6 @@ function ViewMovie() {
 
   const getMovie = async () => {
     const url = `https://api.themoviedb.org/3/movie/${selectedMovieID}?api_key=${process.env.REACT_APP_API_KEY}`;
-
     try {
       const response = await fetch(url);
       const responseJson = await response.json();
@@ -29,7 +28,7 @@ function ViewMovie() {
 
   useEffect(() => {
     getMovie();
-  }, []);
+  }, [selectedMovieID]);
 
   return (
     <Container
