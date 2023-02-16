@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
+import { useParams } from "react-router-dom";
 
 
-function SimilarMovies(props) {
+function SimilarMovies() {
+  const params = useParams();
   const [loading, setLoading] = useState(true);
-  const { dispatch, state: { selectedMovieID, similarMovies } } = useMovieList();
+  const { dispatch, state: { similarMovies } } = useMovieList();
 
   const getSimilarMovies = async () => {
-   const url = `https://api.themoviedb.org/3/movie/${selectedMovieID}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
+   const url = `https://api.themoviedb.org/3/movie/${params.movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
 
     try {
       const response = await fetch(url);
@@ -41,12 +43,6 @@ function SimilarMovies(props) {
           {similarMovies.map((movie) => (
             <Link
               to={"/movie/" + movie.id}
-              onClick={() => {
-                dispatch({
-                  type: "SET_SELECTED_MOVIE_ID",
-                  payload: movie.id,
-                });
-              }}
               style={{ textDecoration: "none" }}
               state={movie.id}
               key={movie.id}

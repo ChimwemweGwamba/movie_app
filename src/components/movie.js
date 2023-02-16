@@ -3,22 +3,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Rating from "./rating";
 import { device } from "../devices/devices";
-import { useMovieList } from "../context/movieContext";
 
 function Movie(props) {
-  const { dispatch } = useMovieList();
 
   return (
     <Container>
       <Link
         to={"/movie/" + props.movie.id}
         style={{ textDecoration: "none" }}
-        onClick={() => {
-          dispatch({
-            type: "SET_SELECTED_MOVIE_ID",
-            payload: props.movie.id,
-          });
-        }}
       >
         <ImageContainer>
           <MovieImage

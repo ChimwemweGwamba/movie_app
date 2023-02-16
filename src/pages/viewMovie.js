@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import MovieBanner from "../components/movieBanner";
 import { useMovieList } from "../context/movieContext";
+import { useParams } from "react-router-dom";
 
 function ViewMovie() {
-  const {
-    dispatch,
-    state: { selectedMovieID, selectedMovie },
-  } = useMovieList();
+  const params = useParams();
+  const { dispatch, state: { selectedMovie } } = useMovieList();
 
   const getMovie = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${selectedMovieID}?api_key=${process.env.REACT_APP_API_KEY}`;
+    const url = `https://api.themoviedb.org/3/movie/${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}`;
     try {
       const response = await fetch(url);
       const responseJson = await response.json();
@@ -28,7 +27,7 @@ function ViewMovie() {
 
   useEffect(() => {
     getMovie();
-  }, [selectedMovieID]);
+  }, [params.movieId]);
 
   return (
     <Container

@@ -17,11 +17,6 @@ function App() {
           ...state,
           movieList: action.payload,
         };
-      case "SET_SELECTED_MOVIE_ID":
-        return {
-          ...state,
-          selectedMovieID: action.payload,
-        };
       case "SET_SELECTED_MOVIE":
         return {
           ...state,
@@ -39,7 +34,6 @@ function App() {
 
   const [state, dispatch] = useReducer(movieReducer, {
     moviesList: [],
-    selectedMovieID: [],
     selectedMovie: [],
     similarMovies: [],
   });
