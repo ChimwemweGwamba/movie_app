@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MovieBanner from "../components/movieBanner";
 import { useMovieList } from "../context/movieContext";
 import { useParams } from "react-router-dom";
+import NavBar from "../components/navbar"
 
 function ViewMovie() {
   const params = useParams();
@@ -36,6 +37,7 @@ function ViewMovie() {
           "https://image.tmdb.org/t/p/original" + selectedMovie.backdrop_path,
       }}
     >
+      <NavBar/>
       {selectedMovie && <MovieBanner />}
     </Container>
   );

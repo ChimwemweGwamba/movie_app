@@ -27,6 +27,11 @@ function App() {
           ...state,
           similarMovies: action.payload,
         };
+        case "SET_FAVOURITE_MOVIES":
+          return {
+            ...state,
+            movieList: action.payload,
+          };
       default:
         throw new Error("No action");
     }
@@ -36,6 +41,7 @@ function App() {
     moviesList: [],
     selectedMovie: [],
     similarMovies: [],
+    favouriteMovies: [],
   });
 
   return (

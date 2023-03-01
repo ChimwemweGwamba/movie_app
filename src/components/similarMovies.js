@@ -6,14 +6,16 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 import { useParams } from "react-router-dom";
 
-
 function SimilarMovies() {
   const params = useParams();
   const [loading, setLoading] = useState(true);
-  const { dispatch, state: { similarMovies } } = useMovieList();
+  const {
+    dispatch,
+    state: { similarMovies },
+  } = useMovieList();
 
   const getSimilarMovies = async () => {
-   const url = `https://api.themoviedb.org/3/movie/${params.movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
+    const url = `https://api.themoviedb.org/3/movie/${params.movieId}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
 
     try {
       const response = await fetch(url);
@@ -36,26 +38,27 @@ function SimilarMovies() {
 
   return (
     <Container>
-      <SectionTitle>Similar Movies</SectionTitle>
-
       {similarMovies && (
-        <MoviesContainer>
-          {similarMovies.map((movie) => (
-            <Link
-              to={"/movie/" + movie.id}
-              style={{ textDecoration: "none" }}
-              state={movie.id}
-              key={movie.id}
-            >
-              <MovieContainer>
-                <MovieImage
-                  src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-                ></MovieImage>
-                <MovieTitle>{movie.title}</MovieTitle>
-              </MovieContainer>
-            </Link>
-          ))}
-        </MoviesContainer>
+        <div>
+          <SectionTitle>Similar Movies</SectionTitle>
+          <MoviesContainer>
+            {similarMovies.map((movie) => (
+              <Link
+                to={"/movie/" + movie.id}
+                style={{ textDecoration: "none" }}
+                state={movie.id}
+                key={movie.id}
+              >
+                <MovieContainer>
+                  <MovieImage
+                    src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                  ></MovieImage>
+                  <MovieTitle>{movie.title}</MovieTitle>
+                </MovieContainer>
+              </Link>
+            ))}
+          </MoviesContainer>
+        </div>
       )}
 
       {loading && (
@@ -76,8 +79,7 @@ function SimilarMovies() {
   );
 }
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 const MoviesContainer = styled.div`
   padding: 10px;

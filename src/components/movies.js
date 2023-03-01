@@ -4,13 +4,13 @@ import Movie from "./movie";
 import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
-function Movies() {
+function Movies(props) {
   const { state: { movieList }} = useMovieList();
 
   return (
     <Container>
-      <SubHeading>POPULAR</SubHeading>
-      <Heading>Top Popular Movies</Heading>
+      <SubHeading>{props.subHeading}</SubHeading>
+      <Heading>{props.heading}</Heading>
 
       <MovieContainer>
         {movieList.map((movie, index) => (

@@ -3,6 +3,7 @@ import { Rings } from "react-loader-spinner";
 import styled from "styled-components";
 import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
+import NavBar from "../components/navbar"
 import { useMovieList } from "../context/movieContext";
 
 function Home() {
@@ -49,10 +50,11 @@ function Home() {
 
   return (
     <Container>
+      <NavBar/>
       {movieList && (
         <div>
           <HomeBanner />
-          <Movies />
+          <Movies heading="Popular Movies" subHeading="Top Movies" page="home"/>
         </div>
       )}
 
