@@ -3,11 +3,14 @@ import styled from "styled-components";
 import MovieBanner from "../components/movieBanner";
 import { useMovieList } from "../context/movieContext";
 import { useParams } from "react-router-dom";
-import NavBar from "../components/navbar"
+import NavBar from "../components/navbar";
 
 function ViewMovie() {
   const params = useParams();
-  const { dispatch, state: { selectedMovie } } = useMovieList();
+  const {
+    dispatch,
+    state: { selectedMovie },
+  } = useMovieList();
 
   const getMovie = async () => {
     const url = `https://api.themoviedb.org/3/movie/${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -37,7 +40,7 @@ function ViewMovie() {
           "https://image.tmdb.org/t/p/original" + selectedMovie.backdrop_path,
       }}
     >
-      <NavBar/>
+      <NavBar />
       {selectedMovie && <MovieBanner />}
     </Container>
   );
@@ -45,7 +48,8 @@ function ViewMovie() {
 
 const Container = styled.div`
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${(props) => props.backgroundImg.url}");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("${(props) => props.backgroundImg.url}");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -3,13 +3,16 @@ import { Rings } from "react-loader-spinner";
 import styled from "styled-components";
 import HomeBanner from "../components/homeBanner";
 import Movies from "../components/movies";
-import NavBar from "../components/navbar"
+import NavBar from "../components/navbar";
 import { useMovieList } from "../context/movieContext";
 
 function Home() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const { dispatch, state: { movieList } } = useMovieList();
+  const {
+    dispatch,
+    state: { movieList },
+  } = useMovieList();
 
   const getMovies = async () => {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`;
@@ -50,11 +53,15 @@ function Home() {
 
   return (
     <Container>
-      <NavBar/>
+      <NavBar />
       {movieList && (
         <div>
           <HomeBanner />
-          <Movies heading="Popular Movies" subHeading="Top Movies" page="home"/>
+          <Movies
+            heading="Popular Movies"
+            subHeading="Top Movies"
+            page="home"
+          />
         </div>
       )}
 

@@ -32,11 +32,19 @@ function MovieBanner() {
               src={
                 "https://image.tmdb.org/t/p/w500" + selectedMovie.poster_path
               }
+              onError={(e) =>
+                (e.target.onerror = null)(
+                  (e.target.src =
+                    "https://upload.wikimedia.org/wikipedia/commons/c/c4/Fox_movietone_2.jpg")
+                )
+              }
             ></MovieImage>
           </ImageContainer>
 
           <TextContainer>
-            <MovieTitle>{`${selectedMovie.title} (${selectedMovie.release_date.slice(0,4)})`}</MovieTitle>
+            <MovieTitle>{`${
+              selectedMovie.title
+            } (${selectedMovie.release_date.slice(0, 4)})`}</MovieTitle>
             <MovieDesc>{selectedMovie.overview}</MovieDesc>
           </TextContainer>
         </TopSection>
@@ -112,8 +120,7 @@ const MovieDesc = styled.p`
   }
 `;
 
-const SimilarMoviesContainer = styled.div`
-`;
+const SimilarMoviesContainer = styled.div``;
 
 const Loader = styled.div`
   display: flex;
