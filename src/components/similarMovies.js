@@ -6,6 +6,7 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 import { useParams } from "react-router-dom";
 
+
 function SimilarMovies() {
   const params = useParams();
   const [loading, setLoading] = useState(true);
@@ -34,7 +35,7 @@ function SimilarMovies() {
 
   useEffect(() => {
     getSimilarMovies();
-  }, []);
+  }, [similarMovies]);
 
   return (
     <Container>
@@ -51,7 +52,12 @@ function SimilarMovies() {
               >
                 <MovieContainer>
                   <MovieImage
-                    src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                    src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}         onError={(e) =>
+                    (e.target.onerror = null)(
+                      (e.target.src =
+                        "https://image.tmdb.org/t/p/original" + movie.backdrop_path)
+                    )
+                  }
                   ></MovieImage>
                   <MovieTitle>{movie.title}</MovieTitle>
                 </MovieContainer>
