@@ -3,36 +3,63 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Rating from "./rating";
 import { device } from "../devices/devices";
+import likedStar from "../assets/images/star.png";
+import unlikedStar from "../assets/images/star (1).png";
+import { useMovieList } from "../context/movieContext";
 
 function Movie(props) {
+  const { dispatch } = useMovieList();
+
+  const handleClick = (action, id) => {
+    action === "add"
+      ? dispatch({
+          type: "ADD_FAVOURITE_MOVIE",
+          payload: id,
+        })
+      : dispatch({
+          type: "REMOVE_FAVOURITE_MOVIE",
+          payload: id,
+        });
+  };
 
   return (
     <Container>
-      <Link
-        to={"/movie/" + props.movie.id}
-        style={{ textDecoration: "none" }}
-      >
+      <Link to={"/movie/" + props.movie.id} style={{ textDecoration: "none" }}>
         <ImageContainer>
           <MovieImage
             src={"https://image.tmdb.org/t/p/w500" + props.movie.poster_path}
           ></MovieImage>
           <MovieDesc>{props.movie.overview}</MovieDesc>
         </ImageContainer>
-
-        <MovieContainer>
-          <MovieTitle>{props.movie.title}</MovieTitle>
-          <Rating
-            ratings={props.movie.vote_average * 10}
-            ratingsColor={
-              props.movie.vote_average >= 8.0
-                ? "green"
-                : props.movie.vote_average >= 6.5
-                ? "orange"
-                : "red"
-            }
-          />
-        </MovieContainer>
       </Link>
+
+      <MovieContainer>
+        <MovieTitle>{props.movie.title}</MovieTitle>
+        <Rating
+          ratings={props.movie.vote_average * 10}
+          ratingsColor={
+            props.movie.vote_average >= 8.0
+              ? "green"
+              : props.movie.vote_average >= 6.5
+              ? "orange"
+              : "red"
+          }
+        />
+      </MovieContainer>
+
+      <div>
+        {props.movie.favMovie ? (
+          <FavIcon
+            src={likedStar}
+            onClick={() => handleClick("remove", props.movie.id)}
+          ></FavIcon>
+        ) : (
+          <FavIcon
+            src={unlikedStar}
+            onClick={() => handleClick("add", props.movie.id)}
+          ></FavIcon>
+        )}
+      </div>
     </Container>
   );
 }
@@ -94,7 +121,7 @@ const MovieDesc = styled.p`
 const MovieTitle = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 200;
   margin: 0;
   width: 80%;
   text-overflow: ellipsis;
@@ -103,6 +130,10 @@ const MovieTitle = styled.p`
   @media ${device.desktop} {
     font-size: 15px;
   }
+`;
+
+const FavIcon = styled.img`
+  height: 20px;
 `;
 
 export default Movie;

@@ -12,26 +12,45 @@ function App() {
         if (state.movieList) {
           action.payload = [...state.movieList, ...action.payload];
         }
-
         return {
           ...state,
           movieList: action.payload,
         };
+
       case "SET_SELECTED_MOVIE":
         return {
           ...state,
           selectedMovie: action.payload,
         };
+
       case "SET_SIMILAR_MOVIES":
         return {
           ...state,
           similarMovies: action.payload,
         };
-      case "SET_FAVOURITE_MOVIES":
+
+      case "ADD_FAVOURITE_MOVIE":
+        for (let i = 0; i < state.movieList.length; i++) {
+          if (state.movieList[i].id === action.payload) {
+            state.movieList[i].favMovie = true;
+            break;
+          }
+        }
         return {
           ...state,
-          movieList: action.payload,
         };
+
+      case "REMOVE_FAVOURITE_MOVIE":
+        for (let i = 0; i < state.movieList.length; i++) {
+          if (state.movieList[i].id === action.payload) {
+            state.movieList[i].favMovie = false;
+            break;
+          }
+        }
+        return {
+          ...state,
+        };
+
       default:
         throw new Error("No action");
     }
@@ -49,7 +68,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/liked" element={<Favourites />} />
+          <Route path="/favourite" element={<Favourites />} />
           <Route path="/movie/:movieId" element={<ViewMovie />} />
         </Routes>
       </BrowserRouter>

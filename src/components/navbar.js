@@ -21,14 +21,14 @@ function Navbar() {
 
         <Item>
           <Link
-            to="/liked"
+            to="/favourite"
             style={{
               color: "white",
               fontWeight: "bold",
               textDecoration: "none",
             }}
           >
-            Liked Movies
+            Favourite Movies
           </Link>
         </Item>
       </Nav>

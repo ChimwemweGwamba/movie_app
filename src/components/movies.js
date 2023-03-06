@@ -5,7 +5,9 @@ import { device } from "../devices/devices";
 import { useMovieList } from "../context/movieContext";
 
 function Movies(props) {
-  const { state: { movieList }} = useMovieList();
+  const {
+    state: { movieList },
+  } = useMovieList();
 
   return (
     <Container>
@@ -13,20 +15,27 @@ function Movies(props) {
       <Heading>{props.heading}</Heading>
 
       <MovieContainer>
-        {movieList.map((movie, index) => (
-          <Movie movie={movie} key={movie.id}></Movie>
-        ))}
+        {props.page === "home"
+          ? movieList.map((movie, index) => (
+              <Movie movie={movie} key={movie.id}></Movie>
+            ))
+          : movieList.map((movie, index) => {
+              if (movie.favMovie === true) {
+                return <Movie movie={movie} key={movie.id}></Movie>;
+              }
+            })}
       </MovieContainer>
     </Container>
   );
 }
 
 const Container = styled.div`
-  width: 90%;
-  margin: 100px auto;
+  width: 80%;
+  margin: 50px auto;
 
   @media ${device.desktop} {
     width: 100%;
+    margin: 100px auto;
   }
 `;
 
