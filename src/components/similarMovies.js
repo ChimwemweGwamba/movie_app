@@ -85,17 +85,19 @@ function SimilarMovies() {
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+width:100%;`;
 
 const MoviesContainer = styled.div`
   padding: 10px;
-  width: 100%;
+  width: 90%;
   display: flex;
+  margin: 20px auto;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
 
   @media ${device.desktop} {
+      flex-wrap: wrap;
     flex-direction: row;
   }
 `;
@@ -109,8 +111,10 @@ const SectionTitle = styled.h1`
 const MovieContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   margin: 20px auto;
+
+
 
   @media ${device.desktop} {
     width: 150px;

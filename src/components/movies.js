@@ -55,12 +55,14 @@ const MovieContainer = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   @media ${device.desktop} {
     padding: 50px 0;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    gap: 30px;
+    justify-content: center;
   }
 `;
 

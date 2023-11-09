@@ -50,10 +50,10 @@ const Nav = styled.ul`
   flex-direction: row;
   margin: 0;
   padding: 0;
+  gap: 30px;
 `;
 
 const Item = styled.li`
-  margin-right: 35px;
 `;
 
 export default Navbar;

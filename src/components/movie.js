@@ -36,7 +36,7 @@ function Movie(props) {
       <MovieContainer>
         <MovieTitle>{props.movie.title}</MovieTitle>
         <Rating
-          ratings={props.movie.vote_average * 10}
+          ratings={Math.round(props.movie.vote_average * 10)}
           ratingsColor={
             props.movie.vote_average >= 8.0
               ? "green"
@@ -77,8 +77,7 @@ const Container = styled.div`
 
   @media ${device.desktop} {
     width: fit-content;
-    margin: 50px 2%;
-    width: 15%;
+    width: 20%;
   }
 `;
 
