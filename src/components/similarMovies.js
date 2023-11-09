@@ -90,7 +90,7 @@ width:100%;`;
 
 const MoviesContainer = styled.div`
   padding: 10px;
-  width: 90%;
+  width: 80%;
   display: flex;
   margin: 20px auto;
   flex-direction: column;
